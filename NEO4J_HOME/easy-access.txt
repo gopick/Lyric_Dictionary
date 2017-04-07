@@ -1,0 +1,18 @@
+Delete All Nodes:
+  MATCH (n)
+  DETACH DELETE n
+
+Match Statement:
+  MATCH (n:Word {Name:"baby"})<-[:Key]-(pee) RETURN pee,n
+
+http://py2neo.org/v3/database.html#py2neo.database.Cursor.data
+http://py2neo.org/v3/database.html
+http://py2neo.org/v3/
+
+
+
+  bin/neo4j restart
+  bin/neo4j stop
+  sudo apt-get install python-pip
+  /usr/bin/python2.7 -m pip install py2neo
+  python2.7 try.py
