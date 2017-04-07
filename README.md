@@ -1,10 +1,6 @@
-# Lyric_Dictionary
+# Song Detail generation 
 
 
-##FIRST STEP 
+##Creation 
 
-1. Build a scraper to get song lyrics 
-
-DataSet:(mxm_dataset_train.txt)
-https://labrosa.ee.columbia.edu/millionsong/musixmatch
-
+1. first use musixmatch api to generate song name, genre, album and other details using details.py
