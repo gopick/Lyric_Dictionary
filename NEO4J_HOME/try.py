@@ -63,8 +63,11 @@ graph.create(Rel12)
 results = graph.find("Word","Name","baby")
 for result in results:
     print(result)
-
-
+# 
+# MATCH (pee1)-[:Key]->(n:Word {Name:"baby"})<-[:Key]-(pee2) WHERE pee1<>pee2 RETURN pee1,pee2,n
+# FOREACH(p1 in pee1 |
+#     FOREACH (p2 in pee2 |
+#                 MATCH (p1)-[:Key]->(n:Word)<-[:Key]-(p2) WHERE p1<>p2)) RETURN p1,p2,n
 #
 # FOREACH(country in cou |
 #     FOREACH (c in ch |

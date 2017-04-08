@@ -16,3 +16,13 @@ http://py2neo.org/v3/
   sudo apt-get install python-pip
   /usr/bin/python2.7 -m pip install py2neo
   python2.7 try.py
+
+
+
+  MATCH (pee1)-[:Key]->(n:Word {Name:"baby"}) WITH collect(pee1) as P1
+  FOREACH (p1 IN P1 |
+      FOREACH (p2 IN filter(z IN  P1 WHERE NOT (z=p1)) |
+          MERGE (p1)-[:Key]->(n:Word)<-[:Key]-(p2)
+      )
+  )
+  
