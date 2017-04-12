@@ -25,4 +25,29 @@ http://py2neo.org/v3/
           MERGE (p1)-[:Key]->(n:Word)<-[:Key]-(p2)
       )
   )
-  
+    
+
+MATCH (pee1)-[:Key]->(n:Word {Name:"baby"}) WITH collect(pee1) as P1
+  FOREACH (p1 IN P1 |
+      FOREACH (p2 IN filter(z IN  P1 WHERE NOT (z=p1)) |
+          MATCH (p1)-[:Key]->(n:Word)<-[:Key]-(p2) WITH collect(n) as Finale
+      )
+  )
+  RETURN Finale
+
+
+MATCH (pee1)-[:Key]->(n:Word {Name:"baby"}) WITH collect(pee1) as P1
+UNWIND P1 as a
+MATCH (pee1)-[:Key]->(n:Word {Name:"baby"}) WITH collect(pee1) as P2
+UNWIND P2 as b
+MATCH (a)-[:Key]->(n:Word)<-[:Key]-(b) RETURN n
+
+
+
+
+
+
+MATCH (pee1)-[:Key]->(n:Word {Name:"baby"}) WITH collect(pee1) as P1
+UNWIND P1 as a
+UNWIND P1 as b
+MATCH (a)-[:Key]->(n:Word)<-[:Key]-(b) RETURN n,a,b

@@ -1,6 +1,7 @@
 #!/usr/bin/python2
-from py2neo import Graph,Node,Relationship
-graph = Graph()
+from py2neo import authenticate,Graph,Node,Relationship
+authenticate("localhost:7474", "neo4j", "cs315")
+graph = Graph("http://localhost:7474/db/data/")
 Node1 = Node("Word",Name="baby")
 Node2 = Node("Word",Name="love")
 Node3 = Node("Word",Name="sex")
@@ -84,3 +85,4 @@ for result in results:
 # FOREACH (n IN nodes(pee))
 
 # MATCH (n:Word {Name:"baby"})<-[:Key]-(pee) RETURN pee,n
+

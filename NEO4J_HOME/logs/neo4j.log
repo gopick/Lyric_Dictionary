@@ -148,3 +148,10 @@ Caused by: org.neo4j.helpers.PortBindException: Address localhost:7687 is alread
 	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:454)
 	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:873)
 	at java.lang.Thread.run(Thread.java:745)
+nohup: ignoring input
+2017-04-12 16:10:29.219+0000 INFO  Starting...
+2017-04-12 16:10:31.373+0000 INFO  Bolt enabled on localhost:7687.
+2017-04-12 16:10:37.046+0000 INFO  Started.
+2017-04-12 16:10:39.125+0000 INFO  Remote interface available at http://localhost:7474/
+2017-04-12 16:10:43.942+0000 WARN  Failed authentication attempt for 'neo4j' from 127.0.0.1
+2017-04-12 16:10:51.713+0000 WARN  Failed authentication attempt for 'neo4j' from 127.0.0.1
