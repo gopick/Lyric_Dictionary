@@ -42,6 +42,7 @@ MATCH (pee1)-[:Key]->(n:Word {Name:"baby"}) WITH collect(pee1) as P2
 UNWIND P2 as b
 MATCH (a)-[:Key]->(n:Word)<-[:Key]-(b) RETURN n
 
+db.song_lyrics.remove({"song_name" : "A Poor Recipe for Civic Cohesion"})
 
 
 

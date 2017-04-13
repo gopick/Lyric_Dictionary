@@ -11,3 +11,6 @@ https://labrosa.ee.columbia.edu/millionsong/musixmatch
 
 https://www.mongodb.com/download-center#enterprise
 https://bottlepy.org/docs/dev/
+
+
+python -m pip install pymongo
