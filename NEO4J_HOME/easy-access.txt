@@ -44,6 +44,27 @@ MATCH (a)-[:Key]->(n:Word)<-[:Key]-(b) RETURN n
 
 db.song_lyrics.remove({"song_name" : "A Poor Recipe for Civic Cohesion"})
 
+# 
+# MATCH (pee1)-[:Key]->(n:Word {Name:"baby"})<-[:Key]-(pee2) WHERE pee1<>pee2 RETURN pee1,pee2,n
+# FOREACH(p1 in pee1 |
+#     FOREACH (p2 in pee2 |
+#                 MATCH (p1)-[:Key]->(n:Word)<-[:Key]-(p2) WHERE p1<>p2)) RETURN p1,p2,n
+#
+# FOREACH(country in cou |
+#     FOREACH (c in ch |
+#             FOREACH (a in addresses |
+#                 CREATE (s:Store {name:c.name+"_"+a, address:a})
+#                 CREATE (s-[:BELONGS_TO]->c)
+#                 CREATE (s-[:IN]->country)               )))
+
+
+# for rel in graph.match(start_node=Node2, rel_type="Key"):
+#     print(rel.end_node()["Name"])
+
+# MATCH (n:Word {Name:"baby"})<-[:Key]-(pee)
+# FOREACH (n IN nodes(pee))
+
+# MATCH (n:Word {Name:"baby"})<-[:Key]-(pee) RETURN pee,n
 
 
 
@@ -52,3 +73,40 @@ MATCH (pee1)-[:Key]->(n:Word {Name:"baby"}) WITH collect(pee1) as P1
 UNWIND P1 as a
 UNWIND P1 as b
 MATCH (a)-[:Key]->(n:Word)<-[:Key]-(b) RETURN n,a,b
+
+
+
+
+
+######################################################################
+import pymongo
+from pymongo import MongoClient
+
+#!/usr/bin/python2
+from py2neo import authenticate,Graph,Node,Relationship
+authenticate("localhost:7474", "neo4j", "cs315")
+graph = Graph("http://localhost:7474/db/data/")
+
+conn = MongoClient('localhost',27017)
+
+db = conn.test
+
+db.song_lyrics.remove("")
+
+
+song_lyrics = db.song_lyrics.find()
+song_count = 0
+for song in song_lyrics:
+  for word in song.words:
+    word_count = 0
+    f.write("Rel_"+song_count+"_"+word_count+" = Relationship("+"Song_"+song_count+ ", 'Key'," + "Node_"+word+")")
+    word_count+=1
+  song_count+=1
+
+
+
+------------------------------------
+python2.7 dict.py
+mongoimport --db test --collection song_lyrics --drop --file temp.txt
+python2.7 create_neo_final.py
+python2.7 zenith.py

@@ -41,9 +41,8 @@ with open("songs.csv", "rb") as f:
 				temp_dict = {}
 				temp_dict[words[temp[0]]] = temp[1]
 				song_detail["words"].append(temp_dict)
-		song_db.insert(str(song_detail))
 		temp_file.write(str(song_detail))
-		temp_file.write('\n')
+		temp_file.write('\n')   
 		song_counter +=1
 
 det.close()
