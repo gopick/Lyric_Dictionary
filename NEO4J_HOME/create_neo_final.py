@@ -18,7 +18,7 @@ f=open("zenith.py","a+")
 
 f.write('# -*- coding: utf-8 -*-'+'\n')
 f.write('from py2neo import authenticate,Graph,Node,Relationship'+'\n')
-f.write('authenticate("localhost:7474", "neo4j", "abhigun")'+'\n')
+f.write('authenticate("localhost:7474", "neo4j", "cs315")'+'\n')
 f.write('graph = Graph("http://localhost:7474/db/data/")'+'\n')
 
 
@@ -33,6 +33,8 @@ song_counter = 0
 with open("data.txt", "rb") as fi:
 	reader = csv.reader(fi, delimiter=",")
 	for line in reader:
+		if song_counter>50:
+			break
 		t = songs[song_counter].split(',')
 		song_detail["song_name"] = t[0]
 		song_detail["album_name"] =t[1]
@@ -45,6 +47,8 @@ with open("data.txt", "rb") as fi:
 
 song_count = 0
 for song in song_lyrics:
+  if song_count>50:
+			break
   word_count = 0
   for word in song["words"]:
     f.write("Rel_"+str(song_count)+"_"+str(word_count)+" = Relationship("+"Song_"+str(song_count)+ ", 'Key'," + "Node_"+str(word.items()[0][0]).encode("ascii", "ignore")+")"+'\n')
