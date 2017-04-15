@@ -66,6 +66,10 @@ db.song_lyrics.remove({"song_name" : "A Poor Recipe for Civic Cohesion"})
 
 # MATCH (n:Word {Name:"baby"})<-[:Key]-(pee) RETURN pee,n
 
+#####################################################################
+
+
+MATCH (n:Word {Name:"love"})<-[:Key]-(pee) RETURN pee,n
 
 
 
@@ -106,7 +110,23 @@ for song in song_lyrics:
 
 
 ------------------------------------
+mongod
+mongo
+bin/neo4j restart
+rm zenith.py
+rm temp.txt
 python2.7 dict.py
 mongoimport --db test --collection song_lyrics --drop --file temp.txt
-python2.7 create_neo_final.py
+python2.7 create_neo_final_small.py
 python2.7 zenith.py
+------------------------------------
+
+python -m pip install pymongo
+
+mongoimport --db test --collection song_lyrics --drop --file temp.txt
+
+use test
+db.song_lyrics.find()
+
+
+perl -pi -e 's/[^[:ascii:]]//g' final_words.txt
